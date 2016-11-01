@@ -1,4 +1,32 @@
-(function(){
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: EnvelopeGraph.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: EnvelopeGraph.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>(function(){
   'use strict';
 
   /** Class representing an editable line graph */
@@ -185,13 +213,13 @@
 
     /** Boolean specifying whether graph has a fixed start point */
     set hasFixedStartPoint (isTrue) {
-      if (this._hasFixedStartPoint === false && isTrue === true) {
+      if (this._hasFixedStartPoint === false &amp;&amp; isTrue === true) {
         this._hasFixedStartPoint = true;
         this._vertices.push([this._minXValue, this._fixedStartPointY]);
         this.sortVertices();
         this.notifyObservers();
         this._drawUI();
-      } else if (this._hasFixedStartPoint === true && isTrue === false) {
+      } else if (this._hasFixedStartPoint === true &amp;&amp; isTrue === false) {
         this._hasFixedStartPoint = false;
         this._vertices.splice(0, 1);
         this.notifyObservers();
@@ -201,13 +229,13 @@
 
     /** Boolean specifying whether graph has a fixed end point */
     set hasFixedEndPoint (isTrue) {
-      if (this._hasFixedEndPoint === false && isTrue === true) {
+      if (this._hasFixedEndPoint === false &amp;&amp; isTrue === true) {
         this._hasFixedEndPoint = true;
         this._vertices.push([this._maxXValue, this._fixedEndPointY]);
         this.sortVertices();
         this.notifyObservers();
         this._drawUI();
-      } else if (this._hasFixedEndPoint === true && isTrue === false) {
+      } else if (this._hasFixedEndPoint === true &amp;&amp; isTrue === false) {
         this._hasFixedEndPoint = false;
         this._vertices.splice(this._vertices.length - 1, 1);
         this.notifyObservers();
@@ -428,9 +456,9 @@
      * @param {number} y
      */
     addVertex (x, y) {
-      if ( (this._vertices.length < this._maxNumVertices || this._maxNumVertices === -1)
-          && (this._hasFixedStartPoint === false || x > this._minXValue )
-          && (this._hasFixedEndPoint === false || x < this._maxXValue)
+      if ( (this._vertices.length &lt; this._maxNumVertices || this._maxNumVertices === -1)
+          &amp;&amp; (this._hasFixedStartPoint === false || x > this._minXValue )
+          &amp;&amp; (this._hasFixedEndPoint === false || x &lt; this._maxXValue)
          ) {
 
         this._vertices.push([x, y]);
@@ -482,7 +510,7 @@
         return p;
       }
 
-      if (lBoundRemainder < uBoundRemainder) {
+      if (lBoundRemainder &lt; uBoundRemainder) {
         result = rawVal - (rawVal % qFactor);
       } else {
         result = (rawVal - (rawVal % qFactor)) + qFactor;
@@ -531,10 +559,10 @@
       let dataPointIndex = -1; // -1 means not found
 
       dataPointIndex = this._vertices.findIndex(vertex => {
-        if (   (vertex[0] < dataX + xBuffer)
-            && (vertex[0] > dataX - xBuffer)
-            && (vertex[1] < dataY + yBuffer)
-            && (vertex[1] > dataY - yBuffer)
+        if (   (vertex[0] &lt; dataX + xBuffer)
+            &amp;&amp; (vertex[0] > dataX - xBuffer)
+            &amp;&amp; (vertex[1] &lt; dataY + yBuffer)
+            &amp;&amp; (vertex[1] > dataY - yBuffer)
            ) {
           return true;
         } else {
@@ -553,7 +581,7 @@
 
       // line is between which two points?
       let lowerBoundIndex = this._vertices.findIndex((vertex, i, vertices) => {
-        if(vertices[i][0] < dataX && vertices[i+1][0] > dataX) {
+        if(vertices[i][0] &lt; dataX &amp;&amp; vertices[i+1][0] > dataX) {
           return true;
         } else {
           return false;
@@ -580,8 +608,8 @@
 
       // is the y being clicked on (dataY) the same as calculated by yValueAtDataX (within the allowed buffer)?
       if (lowerBoundIndex !== -1
-          && dataY > yValueAtDataX - yBuffer
-          && dataY < yValueAtDataX + yBuffer) {
+          &amp;&amp; dataY > yValueAtDataX - yBuffer
+          &amp;&amp; dataY &lt; yValueAtDataX + yBuffer) {
         lineIndex = lowerBoundIndex;
       }
 
@@ -678,7 +706,7 @@
           // if a vertex has been clicked on, we delete it if mouse is up without being moved, or move it if mouse moves
           if (vertexIndex !== -1) {
             // if the vertex is not a fixed start or end point
-            if ((_this._hasFixedStartPoint === false || vertexIndex > 0) && (_this._hasFixedEndPoint === false || vertexIndex < _this._vertices.length - 1)) {
+            if ((_this._hasFixedStartPoint === false || vertexIndex > 0) &amp;&amp; (_this._hasFixedEndPoint === false || vertexIndex &lt; _this._vertices.length - 1)) {
               // if the mouse is up without being moved first, delete the vertex
               _this._container.addEventListener('mouseup', deleteVertex);
               _this._container.addEventListener('touchend', deleteVertex);
@@ -731,7 +759,7 @@
             let tempDataPoint; // used for temporary storage when reordering
             // if it's moved beyond the vertex directly to its right
             if ( _this._vertices[vertexIndex + 1]
-                  && _this._vertices[vertexIndex][0] > _this._vertices[vertexIndex + 1][0]
+                  &amp;&amp; _this._vertices[vertexIndex][0] > _this._vertices[vertexIndex + 1][0]
                 ) {
                     tempDataPoint = _this._vertices[vertexIndex + 1];
                     _this._vertices[vertexIndex + 1] = _this._vertices[vertexIndex];
@@ -739,7 +767,7 @@
                     vertexIndex = vertexIndex + 1;
             // if it's moved beyond the vertex directly to its left
             } else if ( _this._vertices[vertexIndex - 1]
-                        && _this._vertices[vertexIndex][0] < _this._vertices[vertexIndex - 1][0]
+                        &amp;&amp; _this._vertices[vertexIndex][0] &lt; _this._vertices[vertexIndex - 1][0]
                       ) {
                     tempDataPoint = _this._vertices[vertexIndex];
                     _this._vertices[vertexIndex] = _this._vertices[vertexIndex - 1];
@@ -767,10 +795,10 @@
             linePrevY = dataY;
 
             // move the apex vertices of the line by however much it moved, if not outside the max or min y value limits
-            if(_this._vertices[lineIndex][1] + lineDeltaY < _this.maxYValue
-               && _this._vertices[lineIndex + 1][1] + lineDeltaY < _this.maxYValue
-               && _this._vertices[lineIndex][1] + lineDeltaY > _this.minYValue
-               && _this._vertices[lineIndex + 1][1] + lineDeltaY > _this.minYValue) {
+            if(_this._vertices[lineIndex][1] + lineDeltaY &lt; _this.maxYValue
+               &amp;&amp; _this._vertices[lineIndex + 1][1] + lineDeltaY &lt; _this.maxYValue
+               &amp;&amp; _this._vertices[lineIndex][1] + lineDeltaY > _this.minYValue
+               &amp;&amp; _this._vertices[lineIndex + 1][1] + lineDeltaY > _this.minYValue) {
                 _this._vertices[lineIndex][1] = Math.max(Math.min(_this._vertices[lineIndex][1] + lineDeltaY, _this.maxYValue), _this.minYValue);
                 _this._vertices[lineIndex + 1][1] =  Math.max(Math.min(_this._vertices[lineIndex + 1][1] + lineDeltaY, _this.maxYValue), _this.minYValue);
             }
@@ -847,3 +875,26 @@
     }
   }());
 })();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Dial.html">Dial</a></li><li><a href="DropMenu.html">DropMenu</a></li><li><a href="EnvelopeGraph.html">EnvelopeGraph</a></li><li><a href="Histogram.html">Histogram</a></li><li><a href="Keyboard.html">Keyboard</a></li><li><a href="Meter.html">Meter</a></li><li><a href="Numberbox.html">Numberbox</a></li><li><a href="Slider.html">Slider</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Oct 29 2016 14:29:17 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

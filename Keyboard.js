@@ -1,7 +1,23 @@
-define(['require'], function(require) {
+(function(){
   'use strict';
 
-  class LiveKeyboard {
+  /** A class representing a piano keyboard widget */
+  class Keyboard {
+
+    /**
+     * Create a keyboard
+     * @param {object} [o] - Options object.
+     * @param {object} [o.container=document.body] - The DOM element that wraps the widget canvas.
+     * @param {number} [o.bottomNote=48] - The bottom note (MIDI pitch) of the keyboard.
+     * @param {number} [o.topNote=71] - The top note (MIDI pitch) of the keyboard.
+     * @param {string} [o.keyBorderColor='#000'] - The color of the border separating the keys.
+     * @param {string} [o.blackKeyColor='#000'] - The color used for the black keys.
+     * @param {string} [o.whiteKeyColor='#fff'] - The color used for the white keys.
+     * @param {string} [o.blackKeyActiveColor='#555'] - The color used to represent an active black key.
+     * @param {string} [o.whiteKeyActiveColor='#333'] - The color used to represent an active white key.
+     * @param {string} [o.mode='monophonic'] - The polyphony mode. Possible values are 'monophonic' (only one active note at a time) or 'polyphonic' (can have several active notes at a time).
+     * @param {boolean} [o.editable=true] - Boolean specifying whether the keyboard is editable by the mouse or touch interactions. A non-editable keyboard may be used as a visual diagram, for example.
+     */
     constructor (o) {
       o = o || {};
 
@@ -504,5 +520,25 @@ define(['require'], function(require) {
     }
   }
 
-  return LiveKeyboard;
-});
+  /* ============================= */
+  /* --- Module loader support --- */
+  /* ============================= */
+
+  // support for AMD libraries
+  if (typeof define === 'function') {
+    define([], function () {
+      return Keyboard;
+    });
+  }
+
+  // support for CommonJS libraries
+  else if (typeof exports !== 'undefined') {
+    exports.Keyboard = Keyboard;
+  }
+
+  // support for window global
+  else if (typeof window !== 'undefined') {
+    window.Keyboard = Keyboard;
+  }
+
+})();

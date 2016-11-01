@@ -1,7 +1,20 @@
 (function(){
   'use strict';
 
-  class LiveSlider {
+  /** Class representing a slider widget */
+  class Slider {
+
+    /**
+     * Create a slider
+     * @param {object} [o] - Options object.
+     * @param {object} [o.container=document.body] - The DOM element that wraps the widget canvas.
+     * @param {number} [o.value=0] - The initial value for the slider.
+     * @param {number} [o.minVal=0] - The minimum possible value the slider can represent.
+     * @param {number} [o.maxVal=127] - The maximum possible value teh slider can represent.
+     * @param {string} [o.sliderBarColor='#000'] - The color of the slider bar.
+     * @param {string} [o.triangleBorderColor='#000'] - The color of the triangle used as the slider's needle.
+     * @param {string} [o.triangleFillColor='#000'] - The fill color for the slider's triangle needle.
+     */
     constructor (o) {
       o = o || {};
 
@@ -252,22 +265,22 @@
   // support for AMD libraries
   if (typeof define === 'function') {
     define([], function () {
-      return LiveSlider;
+      return Slider;
     });
   }
 
   // support for CommonJS libraries
   else if (typeof exports !== 'undefined') {
-    exports.LiveSlider = LiveSlider;
+    exports.Slider = Slider;
   }
 
   // support for window global
   else if (typeof window !== 'undefined') {
-    window.LiveSlider = LiveSlider;
+    window.Slider = Slider;
   }
 
   // support for Node.js global
   else if (typeof global !== 'undefined') {
-    global.LiveSlider = LiveSlider;
+    global.Slider = Slider;
   }
 })();

@@ -1,7 +1,19 @@
 (function(){
   'use strict';
 
-  class LiveDial {
+  /** Class representing a dial widget */
+  class Dial {
+
+    /**
+     * Create a dial
+     * @param {object} [o] - Options object.
+     * @param {object} [o.container=document.body] - The DOM element that wraps the widget canvas.
+     * @param {number} [o.value=0] - Inital value.
+     * @param {number} [o.minVal=0] - Minimum possible value.
+     * @param {number} [o.maxVal=127] - Maximum possible value.
+     * @param {string} [o.needleColor='#000'] - Dial needle color.
+     * @param {string} [o.activeColor='#f40'] - Color of the arc that shows the current dial value.
+     */
     constructor (o) {
       o = o || {};
 
@@ -15,7 +27,6 @@
       // display options
       this._needleColor = o.needleColor || '#000';
       this._activeColor = o.activeColor || '#f40';
-      this._fontFamily = o.fontFamily || 'Arial';
 
       // set up the canvas
       this._container = o.container || document.body;
@@ -222,22 +233,22 @@
   // support for AMD libraries
   if (typeof define === 'function') {
     define([], function () {
-      return LiveDial;
+      return Dial;
     });
   }
 
   // support for CommonJS libraries
   else if (typeof exports !== 'undefined') {
-    exports.LiveDial = LiveDial;
+    exports.Dial = Dial;
   }
 
   // support for window global
   else if (typeof window !== 'undefined') {
-    window.LiveDial = LiveDial;
+    window.Dial = Dial;
   }
 
   // support for Node.js global
   else if (typeof global !== 'undefined') {
-    global.LiveDial = LiveDial;
+    global.Dial = Dial;
   }
 })();

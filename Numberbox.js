@@ -1,11 +1,20 @@
-define(['require'], function(require){
+(function(){
   'use strict';
 
-
-  class DragNumberbox {
+  /** Class representing a draggable numberbox */
+  class Numberbox {
 
     /**
-     * A draggable number box
+     * Create a number box
+     * @param {object} [o] - Options object.
+     * @param {object} [o.container=document.body] - The DOM element that wraps the widget canvas.
+     * @param {number} [o.value=0] - The initial value.
+     * @param {number} [o.minValue] - The minimum possible value if clamped. If unspecified, no clamping is used.
+     * @param {number} [o.maxValue] - The maximum possible value if clamped. If unspecified, no clamping is used.
+     * @param {string} [o.backgroundColor] - The UI background color. If unspecified, the color of the container's background is used.
+     * @param {string} [o.fontColor] - The UI font color. If unspecified, the color of the container's font is used.
+     * @param {string} [o.dragDelta=1] - The factor by which dragging affects the value decrease or increase.
+     * @param {string} [o.appendString] - A string to append after the value when displaying (useful to specify units, i.e. 'min', 'kg', 'oz').
      */
     constructor (o) {
       o = o || {}
@@ -171,6 +180,25 @@ define(['require'], function(require){
 
   }
 
-  return DragNumberbox;
+  /* ============================= */
+  /* --- Module loader support --- */
+  /* ============================= */
 
-});
+  // support for AMD libraries
+  if (typeof define === 'function') {
+    define([], function () {
+      return Numberbox;
+    });
+  }
+
+  // support for CommonJS libraries
+  else if (typeof exports !== 'undefined') {
+    exports.Numberbox = Numberbox;
+  }
+
+  // support for window global
+  else if (typeof window !== 'undefined') {
+    window.Numberbox = Numberbox;
+  }
+
+})();

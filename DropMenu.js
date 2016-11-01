@@ -1,14 +1,27 @@
 (function(){
   'use strict';
 
-  class LiveDropMenu {
+  /** Class representing a drop-down menu */
+  class DropMenu {
 
-    /* =================== */
-    /* --- Constructor --- */
-    /* =================== */
-
+    /**
+     * Create a drop-down menu.
+     * @param {object} [o] - Options object.
+     * @param {object} [o.container=document.body] - The DOM element that wraps the widget canvas.
+     * @param {string} [o.backgroundColor='#fff'] - The UI background color.
+     * @param {string} [o.fontColor='#000'] - The UI font color.
+     * @param {string} [o.fontSize='12px'] - The font size.
+     * @param {string} [o.fontFamily='Arial'] - The font family.
+     * @param {string} [o.menuItemFontSize='12px'] - The font size for items in the opened drop-down menu.
+     * @param {string} [o.menuItemFontFamily='Arial'] - The font family for items in the opened drop-down menu.
+     * @param {string} [o.selectedItemBackgroundColor='#ccc'] - The background cover for the selected (hovered) item in the opened drop-down menu.
+     * @param {string} [o.selectedItemFontColor='#fff'] - The font color for the selected (hovered) item in the opened drop-down menu.
+     * @return {object} this - Returns a reference to the new object instance.
+     */
     constructor (o) {
       o = o || {};
+
+      // observers
       this._observers = [];
 
       // menu items
@@ -22,7 +35,7 @@
       this._UIfontSize = o.fontSize || o.UIfontSize || '12px';
       this._UIfontFamily = o.fontFamily || o.UIfontFamily || 'Arial';
       this._UImenuItemFontSize = o.menuItemFontSize || o.UImenuItemFontSize || '12px';
-      this._UImenuItemFntFamily = o.menuItemFontFamily || o.UImenuItemFontFamily || 'Arial';
+      this._UImenuItemFontFamily = o.menuItemFontFamily || o.UImenuItemFontFamily || 'Arial';
       this._UIselectedItemBackgroundColor = o.selectedItemBackgroundColor || o.UIselectedItemBackgroundColor || '#ccc';
       this._UIselectedItemFontColor = o.selectedItemFontColor || o.UIselectedItemBackgroundColor || '#fff';
 
@@ -57,7 +70,7 @@
     /* --- Getters and setters --- */
     /* =========================== */
 
-    /** Menu items */
+    /** An array of strings representing the items in the menu */
     get menuItems () {
       return this._menuItems;
     }
@@ -73,9 +86,7 @@
       return this;
     }
 
-    /**
-     * Value - the item number selected
-     */
+    /** Value - the item number selected */
     get value () {
       return this._selectedItemNum;
     }
@@ -86,8 +97,13 @@
       return this;
     }
 
+    /* ========================== */
+    /* --- State manipulation --- */
+    /* ========================== */
+
     /**
      * Add a menu item
+     * @param {string} newItem - The new item to be added to the menu
      */
     addMenuItem (newItem) {
       this._menuItems.push(newItem);
@@ -105,13 +121,13 @@
     /* --- UI drawing --- */
     /* ================== */
 
-    /** Draw the UI */
+    /* Draw the UI */
     _drawUI () {
       this._drawClosedMenuBox();
       this._drawDropDownMenuBox();
     }
 
-    /** Draw the closed menu box */
+    /* Draw the closed menu box */
     _drawClosedMenuBox () {
       // draw the box
       this._ctx.fillStyle = this._UIbackgroundColor;
@@ -124,7 +140,7 @@
       this._ctx.fillText(this._menuItems[this._selectedItemNum], 10, this._canvas.height / 2);
     }
 
-    /** Draw the drop-down box */
+    /* Draw the drop-down box */
     _drawDropDownMenuBox() {
       const _this = this;
       const menuItemHeight = _this._getMenuItemHeight();
@@ -150,7 +166,7 @@
       }
     }
 
-    /** Get the dimensions for the drop-down canvas */
+    /* Get the dimensions for the drop-down canvas */
     _getDdCanvasDimensions () {
       const _this = this;
 
@@ -171,7 +187,7 @@
       return { width: width, height: height };
     }
 
-    /** Get the height of each menu item */
+    /* Get the height of each menu item */
     _getMenuItemHeight () {
       const menuItemHeight = parseInt(this._UImenuItemFontSize) * 2;
       return menuItemHeight;
@@ -181,7 +197,7 @@
     /* --- UI interaction --- */
     /* ====================== */
 
-    /** Assign the listeners for UI interaction */
+    /* Assign the listeners for UI interaction */
     _assignListeners () {
       const _this = this;
 
@@ -250,7 +266,7 @@
     }
 
     /**
-     * Notify the subscribed observers
+     * Notify the subscribed observers of the current selected item number
      */
     notifyObservers () {
       const _this = this;
@@ -291,22 +307,17 @@
   // support for AMD libraries
   if (typeof define === 'function') {
     define([], function () {
-      return LiveDropMenu;
+      return DropMenu;
     });
   }
 
   // support for CommonJS libraries
   else if (typeof exports !== 'undefined') {
-    exports.LiveDropMenu = LiveDropMenu;
+    exports.DropMenu = DropMenu;
   }
 
   // support for window global
   else if (typeof window !== 'undefined') {
-    window.LiveDropMenu = LiveDropMenu;
-  }
-
-  // support for Node.js global
-  else if (typeof global !== 'undefined') {
-    global.LiveDropMenu = LiveDropMenu;
+    window.DropMenu = DropMenu;
   }
 })();
