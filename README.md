@@ -13,7 +13,8 @@ Each widget should be placed inside a wrapping html element
 ```html
 <div id="dial-container"></div>
 ```
-Define the 
+The dimensions of the wrapping element should be explicitely specified
+
 **CSS**
 ```css
 #dial-container {
