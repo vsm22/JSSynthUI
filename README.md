@@ -13,6 +13,7 @@ Each widget should be placed inside a wrapping html element
 ```html
 <div id="dial-container"></div>
 ```
+Define the 
 **CSS**
 ```css
 #dial-container {
@@ -22,7 +23,13 @@ Each widget should be placed inside a wrapping html element
 ```
 **JavaScript**
 ```javascript
-var myDial = new Dial({ container: document.getElementById("dial-container");
+const myDial = new Dial({ container: document.getElementById("dial-container") });
 ```
-  
-  
+
+Creating a widget without explicitely providing a container will place the widget inside `document.body`, and will give it the full width and height of the body.
+
+Widget Events
+-------------
+Each widget stores the value of its state, and can be asked to report it using the `.subscribe(context, callback)` method.
+The subscribe method takes two arguments - a `context` attached to the callback function, and the `callback` function itself.
+For example, the following method subscribes a
