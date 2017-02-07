@@ -22,6 +22,9 @@ The dimensions of the wrapping element should be explicitely specified
     height: 50px;
 }
 ```
+The widget is constructed from its class with an optional arguments object (see below).
+At the least, the arguments object should have a `container` field, specifying the DOM container to use as the wrap for the widget.
+
 **JavaScript**
 ```javascript
 const myDial = new Dial({ container: document.getElementById("dial-container") });
