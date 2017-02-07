@@ -5,7 +5,7 @@ A library of HTML5 canvas widgets for building synths and audio applications
 
 JSSynthUI is a library of widgets for building interfaces for synthesizers and other audio related apps. The look of the library was inspired by the look of Ableton Live and Max-for-Live components. Currently the components are implemented using the HTML5 canvas, but SVG implementation is also planned. 
 
-Typical Usage
+Adding a Widget 
 -------------
 Each widget should be placed inside a wrapping html element
 
