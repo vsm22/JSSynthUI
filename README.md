@@ -26,10 +26,19 @@ Define the
 const myDial = new Dial({ container: document.getElementById("dial-container") });
 ```
 
-Creating a widget without explicitely providing a container will place the widget inside `document.body`, and will give it the full width and height of the body.
+Note that creating a widget without explicitely providing a container will by default place the widget inside `document.body`, and will give it the full width and height of the body.
 
 Widget Events
 -------------
 Each widget stores the value of its state, and can be asked to report it using the `.subscribe(context, callback)` method.
 The subscribe method takes two arguments - a `context` attached to the callback function, and the `callback` function itself.
-For example, the following method subscribes a
+For example, the following snippet will call the printVal function every time the dial is moved, and print the new value of the dial to the console. 
+
+```javascript
+const myDial = new Dial({ container: document.getElementById("dial-container") });
+myDial.subscribe(this, printVal);
+
+function printVal(val) {
+    console.log(val);
+}
+```
