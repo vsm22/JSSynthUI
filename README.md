@@ -46,3 +46,22 @@ function printVal(val) {
     console.log(val);
 }
 ```
+Common Options
+==============
+The following options are common for all widgets
+
+
+Common Methods
+==============
+The following methods are implemented in all widget classes
+
+`subscribe(Object context, function callback(newValue))`
+    - context: the context which calls the the callback function
+    - callback: the callback function invoked when the widget's state changes
+        - newValue: the new value of the widget passed to the callback function
+
+
+
+
+
+
