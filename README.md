@@ -71,9 +71,15 @@ Dial
 ----
 The Dial class represents a dial 
 
+<html>
+<div id="test-div"></div>
+</html>
+
 <script> 
-    window.onload = function() {
-        window.alert();
+    window.onload = init;
+    
+    function init() {
+        document.getElementById("test-div").innerHTML = "testing";
     }
 </script>
 
