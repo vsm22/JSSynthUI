@@ -67,8 +67,10 @@ Unsubscribe a callback function from receiving state updates from the widget
 - **context**: the context which calls the the callback function
 - **callback**: the callback function to be unsubscribed
 
-Dial
-----
+Widgets
+-------
+### Dial
+
 The Dial class represents a dial
 **Options**
 container
@@ -77,26 +79,26 @@ maxVal
 needleColor
 activeColor
 
-DropMenu
---------
+### DropMenu
 
-EnvelopeGraph
--------------
 
-Histogram
----------
+### EnvelopeGraph
 
-Keyboard
---------
 
-Meter
------
+### Histogram
 
-Numberbox
----------
 
-Slider
-------
+### Keyboard
+
+
+### Meter
+
+
+### Numberbox
+
+
+### Slider
+
 
 
 
