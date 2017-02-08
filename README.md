@@ -72,7 +72,7 @@ Dial
 The Dial class represents a dial 
 
 <html>
-<div id="test-div"></div>
+<div id="test-div">heyhey</div>
 </html>
 
 <script> 
