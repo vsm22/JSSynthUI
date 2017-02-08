@@ -67,6 +67,16 @@ Unsubscribe a callback function from receiving state updates from the widget
 - **context**: the context which calls the the callback function
 - **callback**: the callback function to be unsubscribed
 
+Dial
+----
+The Dial class represents a dial 
+
+<script> 
+    window.onload = function() {
+        window.alert();
+    }
+</script>
+
 
 
 
