@@ -72,7 +72,7 @@ Widgets
 ### Dial
 
 The Dial class represents a dial
-**Options**
+#### Options
 container
 minVal
 maxVal
