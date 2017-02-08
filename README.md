@@ -72,12 +72,20 @@ Widgets
 ### Dial
 
 The Dial class represents a dial
-#### Options
+#### Constructor Options
 container
 minVal
 maxVal
 needleColor
 activeColor
+
+#### Available Methods
+subscribe
+unsubscribe
+notify
+setCanvasWidth
+setCanvasHeight
+setValue
 
 ### DropMenu
 
