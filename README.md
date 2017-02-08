@@ -1,5 +1,5 @@
 JSSynthUI
-==========
+=========
 A library of HTML5 canvas widgets for building synths and audio applications
 ----------------------------------------------------------------------------
 ![alt text](https://vsm22.github.io/images/JSLiveWidgets.png "JSSynthUI")
@@ -7,7 +7,7 @@ A library of HTML5 canvas widgets for building synths and audio applications
 JSSynthUI is a library of widgets for building interfaces for synthesizers and other audio related apps. The look of the library was inspired by the look of Ableton Live and Max-for-Live components. Currently the components are implemented using the HTML5 canvas, but SVG implementation is also planned. 
 
 Adding a Widget 
--------------
+---------------
 Each widget should be placed inside a wrapping html element
 
 **HTML**
@@ -69,20 +69,34 @@ Unsubscribe a callback function from receiving state updates from the widget
 
 Dial
 ----
-The Dial class represents a dial 
+The Dial class represents a dial
+**Options**
+container
+minVal
+maxVal
+needleColor
+activeColor
 
-<html>
-<div id="test-div">heyhey</div>
-</html>
+DropMenu
+--------
 
-<script> 
-    (function(){
-        window.document.getElementById("test-div").innerHTML = "testing";
-    }());
-</script>
+EnvelopeGraph
+-------------
 
+Histogram
+---------
 
+Keyboard
+--------
 
+Meter
+-----
+
+Numberbox
+---------
+
+Slider
+------
 
 
 
